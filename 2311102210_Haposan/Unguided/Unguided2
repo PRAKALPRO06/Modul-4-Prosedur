@@ -1,0 +1,78 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+// Procedure to calculate the score for each participant
+func hitungSkor(input string) (int, int) {
+	// Split input by spaces to extract participant name and times for problems solved
+	fields := strings.Fields(input)
+	totalSolved := 0
+	totalTime := 0
+
+	// Process the remaining fields, which represent times for each problem
+	for i := 1; i < len(fields); i++ {
+		var time int
+		fmt.Sscan(fields[i], &time) // Convert the string time into an integer
+		if time <= 300 {            // Only count problems solved within 300 minutes
+			totalSolved++
+			totalTime += time
+		}
+	}
+
+	// Return total number of problems solved and the total time for solved problems
+	return totalSolved, totalTime
+}
+
+
+// Fungsi untuk mencetak watermark
+func watermark() {
+	fmt.Println("=================================")
+	fmt.Println("Nama: Haposan Siregar")
+	fmt.Println("NIM: 2311102210")
+	fmt.Println("=================================")
+}
+
+
+func main() {
+	watermark() // Menampilkan watermark
+
+	// Input data for participants
+	inputs := []string{
+		"Astuti 20 50 301 301 61 71 75 10",
+		"Bertha 25 47 301 26 50 60 65 21",
+	}
+
+	var winnerName string = ""
+	var winnerSolved int = 0
+	var winnerTime int = 0
+
+	// Output header for table
+	fmt.Printf("%-10s | %-10s | %-10s\n", "Nama", "Soal Selesai", "Total Waktu")
+	fmt.Println("------------------------------------------")
+
+	// Process each participant's data
+	for _, input := range inputs {
+		solved, time := hitungSkor(input)
+
+		// Extract participant's name
+		fields := strings.Fields(input)
+		name := fields[0]
+
+		// Print each participant's result in tabular form
+		fmt.Printf("%-10s | %-10d | %-10d\n", name, solved, time)
+
+		// Determine if the current participant should be the new winner
+		if solved > winnerSolved || (solved == winnerSolved && time < winnerTime) {
+			winnerName = name
+			winnerSolved = solved
+			winnerTime = time
+		}
+	}
+
+	// Output the winner details
+	fmt.Println("------------------------------------------")
+	fmt.Printf("Pemenang: %s, Jumlah Soal: %d, Total Waktu: %d menit\n", winnerName, winnerSolved, winnerTime)
+}
