@@ -1,0 +1,53 @@
+package main
+
+import (
+    "fmt"
+)
+
+// Fungsi untuk mencetak urutan berdasarkan angka awal yang diberikan dalam format tabel
+func cetakDeret(n int) {
+    counter := 0
+    fmt.Printf("%-10s", "No")
+    fmt.Printf("%-10s\n", "Suku")
+
+    // Putar sampai n menjadi 1
+    for n != 1 {
+        counter++
+        // Cetak penghitung dan angka dalam kolom
+        fmt.Printf("%-10d", counter)
+        fmt.Printf("%-10d\n", n)
+        if n%2 == 0 {
+            n = n / 2 // If even, divide by 2
+        } else {
+            n = 3*n + 1 // If odd, calculate 3n + 1
+        }
+    }
+    counter++
+    // Cetak angka terakhir (yang akan menjadi 1)
+    fmt.Printf("%-10d", counter)
+    fmt.Printf("%-10d\n", n)
+}
+
+// Fungsi untuk mencetak watermark
+func watermark() {
+    fmt.Println("=================================")
+    fmt.Println("Nama: Haposan Siregar")
+    fmt.Println("NIM: 2311102210")
+    fmt.Println("=================================")
+}
+
+func main() {
+    watermark() // Menampilkan watermark
+    
+    // Contoh input
+    var n int
+    fmt.Print("Masukkan angka: ")
+    fmt.Scanln(&n)
+
+    // Pastikan input valid
+    if n > 0 && n < 1000000 {
+        cetakDeret(n) // Call the function to print the sequence in table format
+    } else {
+        fmt.Println("Masukan harus bilangan positif dan kurang dari 1000000.")
+    }
+}
