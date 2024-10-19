@@ -1,0 +1,213 @@
+Guided 1
+program Guided1 
+    kamus:
+        bilangan:integer
+        pesan:string
+    algoritma:
+        input(bilangan, pesan)
+        cetakPesan(pesan, bilangan)
+end program
+
+procedure cetakPesan(M:string, flag:integer) 
+    kamus:
+        jenis:string
+    algoritma:
+        if flag == 0 then
+            jenis <- "Error"
+        else if flas == 1 then 
+            jenis <- "Warning"
+        else if folag == 2 then 
+            jenis <- "Informasi"
+    output(M,flag)
+end procedure
+
+Guided 2
+program kirimEmail
+    algoritma:
+        //
+        declare email as array of string = {"User@example.com", "User@example.com", "User@example.com"}
+        //
+        //
+        email := []string{"User@example.com", "User@example.com", "User@example.com"}
+        //
+
+        output("Mengirim Email ke yang baru terdaftar")
+
+        //
+        for each email in emails do
+            sendEmailNotification(email)
+        end for
+        //
+        //
+        for _, email := range emails {
+            sendEmailNotification(email)
+        }
+        //
+end program
+procedure sendEmailNotification(email:string)
+    algoritma:
+        output("Mengirim email", email)
+end procedure
+
+Guided 3
+fungsi f1(x,y:integer) real
+    kamus:
+        hasil:real
+    algoritma:
+        hasil <- real(2*x) - 0.5*real(y) + 3.0
+        return hasil
+end fungsi
+
+fungsi f2(x,y:integer, hasil: reference to float)
+    *hasil <- real(2*x) - 0.5*real(y) + 3.0
+end fungsi
+
+program menghitung
+    kamus:
+        a,b : integer
+        c : real
+    algoritma:
+        output("enter two integers:")
+        print(a,b)
+        f2(a, b, &c) // nilai akan dipindahkan kedalam c
+
+        print("Result form f2 (stored in c): c)
+
+        declare resultF1 to f1(b,a)
+        print("Result from f1:", resultF1)
+end program
+
+UnGuided1
+program jonasTask
+    kamus:
+        a,b,c,d : integer
+    algoritma:
+        input(a, b, c, d)
+        if a >= c AND b >= d then
+            taskDiskrit(a, b, c, d)
+        else 
+            break
+end program
+
+produce taskDiskrit(a, b, c, d:integer) 
+    output (permutation(a, c:integer))
+    output (combination(a, c:integer))
+    output (permutation(b, d:integer))
+    output (combination(b, d:integer))
+end procedure
+
+procedure factorial(n;integer)
+    kamus:
+        hasil,i : integer
+    algoritma:
+    for i <- 1 to n do
+        hasil = hasil * i
+    end for
+end procedure
+
+procedure permutation (a, b : integer)
+    kamus:
+        kiri,kanan : integer
+    algoritma:
+        kiri <- faktorial(a)
+        kanan <- faktorial(a - b)
+        return kiri / kanan
+end procedure
+
+procedure combination (a, b : integer)
+    kamus:
+        kiri, kanan1, kanan2 : integer
+    algoritma:
+        kiri <- faktorial(a)
+        kanan1 <- faktorial(a)
+        kanan2 <- faktorial(b)
+        return kiri / (kanan1 * kanan2)
+end procedure
+
+UnGuided2 //Menggunakan array
+Program kompetisiPemrograman
+    kamus:
+        declare nilai : array[1..2, 1..8] of integer
+        nama1, nama2 : string
+        i,j : integer
+    algoritma:
+        for i <- 1 to 2 do
+            if i == 1 then
+                input(nama1)
+            else if i == 2 then
+                input(nama2)
+            //end if
+            // downto adalah decrement
+            for j <- 1 to 8 do 
+                input(nilai[i,j])
+                if nilai[i,j] == 0 then
+                    nilai[i,j] <- 301
+                //end if
+            //end for
+        //end for
+        for i <- 1 to 2 do
+            hitungSkor(nilai, 2, 8, nama1, nama2)
+        //end for
+//end program
+
+Procedure hitungSkor(arr: array of integer, jumlahOrang, banyakSkor, peserta1, peserta2)
+    kamus:
+        hasilSkor1, hasilSkor2 : integer
+        jumlahSoalTerjawab1, jumlahSoalTerjawab2 : integer
+        menang : string
+        i, j : integer
+    algoritma:
+        for i <- 1 to jumlahOrang do
+            for j <- 1 to banyakSkor do
+                if i == 1 then
+                hasilSkor1 <- hasilSkor1 + arr[i][j]
+                if arr[i][j] != 301 then
+                    jumlahSoalTerjawab1++
+                //end if
+                else then
+                hasilSkor2 <- hasilSkor2 + arr[i][j]
+                if arr[i][j] != 301 then
+                    jumlahSoalTerjawab2++
+                //end if
+            //end for
+        //end for
+        if jumlahSoalTerjawab1 == jumlahSoalTerjawab2 then
+            if hasilSkor1 > hasilSkor2 then
+                hasilSkor1 <- hasilSkor1 - (301 * (banyakSkor - jumlahSoalTerjawab1))
+                output(peserta1 jumlahSoalTerjawab1 hasilSkor1)
+            else then
+                hasilSkor2 <- hasilSkor2 - (301 * (banyakSkor - jumlahSoalTerjawab2))
+                output(peserta2 jumlahSoalTerjawab2 hasilSkor2)
+        else if jumlahSoalTerjawab1 > jumlahSoalTerjawab2 then
+            hasilSkor1 <- hasilSkor1 - (301 * (banyakSkor - jumlahSoalTerjawab1))
+            output(peserta1 jumlahSoalTerjawab1 hasilSkor1)
+        else if jumlahSoalTerjawab2 > jumlahSoalTerjawab1 then
+            hasilSkor2 <- hasilSkor2 - (301 * (banyakSkor - jumlahSoalTerjawab2))
+            output(peserta2 jumlahSoalTerjawab2 hasilSkor2)
+        //end if
+
+UnGuided3 
+program skiena 
+    kamus:
+        sukuAwal : integer
+    algoritma:
+        input("Masukan nilai dari 0 - 1000000", sukuAwal)
+        cetakDeret(sukuAwal)
+end program
+
+procedure cetakDeret(n : integer) 
+    kamus:
+        genap : integer
+        ganjil : integer
+    algoritma:
+        genap <- 0.5 * n
+        ganjil <- 3 * n + 1
+        repeat
+            if n mod 2 == 0 then
+                n <- genap
+                output(" ", n)
+            else 
+                n <- ganjil
+                output(" ", n)
+        until n == 1
+end procedure
