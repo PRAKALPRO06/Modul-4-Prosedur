@@ -1,0 +1,68 @@
+package main
+
+import (
+	"fmt"
+)
+
+// Fungsi untuk menghitung faktorial dari n
+func factorial (n int) int {
+	if n == 0 {
+		return 1
+	}
+	result := 1
+	for i := 2; i <= n; i++ {
+		result *= i
+	}
+	return result
+}
+
+// Fungsi untuk menghitung permutasi P(n, r)
+func permutation(n, r int) int {
+	return factorial(n) / factorial(n-r)
+}
+
+// Fungsi untuk menghitung kombinasi C(n, r)
+func combination(n, r int) int {
+	return factorial(n) / (factorial(r) * factorial(n-r))
+}
+
+// Fungsi untuk mencetak watermark
+func watermark() {
+	fmt.Println("=================================")
+	fmt.Println("Nama: Haposan Siregar")
+	fmt.Println("NIM: 2311102210")
+	fmt.Println("=================================")
+}
+
+
+func main() {
+	watermark() // Menampilkan watermark
+
+	for {
+		// Input dari user
+		var a, b, c, d int
+		fmt.Println("Masukkan nilai a, b, c, d (a >= c dan b >= d):")
+		fmt.Scan(&a, &b, &c, &d)
+
+		// Cek syarat a >= c dan b >= d
+		if a < c || b < d {
+			fmt.Println("Ada kesalahan, sampai jumpa kembali!")
+			break
+		}
+
+		// Hasil permutasi dan kombinasi untuk (a, c)
+		permutationAC := permutation(a, c)
+		combinationAC := combination(a, c)
+
+		// Hasil permutasi dan kombinasi untuk (b, d)
+		permutationBD := permutation(b, d)
+		combinationBD := combination(b, d)
+
+		// Menampilkan hasil dalam bentuk tabel
+		fmt.Printf("\n| %-8s | %-8s | %-8s |\n", "Masukan", "Keluaran", "Penjelasan")
+		fmt.Println("|---------------------------------|")
+		fmt.Printf("| %-8d %-8d %-8d %-8d | %-8d %-8d | %-8s |\n", a, b, c, d, permutationAC, combinationAC, "P(a,c) dan C(a,c)")
+		fmt.Printf("| %-8d %-8d %-8d %-8d | %-8d %-8d | %-8s |\n", a, b, c, d, permutationBD, combinationBD, "P(b,d) dan C(b,d)")
+		fmt.Println()
+	}
+}
